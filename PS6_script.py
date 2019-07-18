@@ -67,11 +67,12 @@ with open(f, "r") as fh:
 			cov_blue_list.append(cov)
 			contigs_N50_list.append(physical_length)
 			contigs_N50_list.sort(reverse=True)
+			print(contigs_N50_list)
+			print(cov_blue_list)
+
+
+
 			
-
-
-
-			#print(cov_blue_list)
 
 			j+=1
 			contig_counter+=1
