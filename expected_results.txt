@@ -1,0 +1,26 @@
+We created the Unit_test.fa file with 5 records (contigs)
+
+the contig lengths are
+[2220, 1202, 870, 601, 285]
+by writing out on the board and doing the math we would expect:
+
+number of contigs to be 5,
+the maximum number to be 2220
+the length of the contigs altogether to be 5178 (2220+1202+870+607+285)
+the n50 to be within the 1202 contig (drew it out)
+
+the coverage for the contigs are
+[536.720947, 81.681267, 146.578064, 59.786617, 70.279007]
+
+the mean of the coverage should be 179
+
+Here are the results from running the tester file:
+
+n50: 1202
+Maximum contig length: 2220
+Mean length of contigs: 1035.6
+Length of genome across contigs: 5178
+Number of contigs: 5
+Mean depth of coverage for contigs: 179.00918040000002
+
+YAY! and it worked for the contig.fa too! woot woot!
