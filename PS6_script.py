@@ -28,8 +28,6 @@ nf = args.new_file
 
 #example     >NODE_1_length_1154_cov_536.720947
 
-kmer_length = []
-kmer_dist = []
 contigs_length_list = []
 cov_blue_list = []
 contigs_N50_list = []
@@ -77,7 +75,7 @@ with open(f, "r") as fh:
 
 			j+=1
 			contig_counter+=1
-			
+
 #to calculate n50			
 total = 0
 for contigs in contigs_N50_list:
@@ -89,18 +87,8 @@ for contigs in contigs_N50_list:
 		break
 print("n50:", contigs)
 
-
-	
-
-
-
-
 genome = sum(contigs_length_list)
-
-
 tot_coverage = (sum(contigs_length_list)*contig_counter)/genome
-
-
 
 print("Maximum contig length:", contigs_length_list[-1]) 
 print("Mean length of contigs:", sum(contigs_length_list)/contig_counter)
@@ -108,27 +96,28 @@ print("Length of genome across contigs:", genome)
 print("Number of contigs:", contig_counter)
 print("Mean depth of coverage for contigs:", sum(cov_blue_list)/contig_counter)
 
-#Calculate the N50 value of your assembly.
+#Calculate the distribution of contig lengths and bucket the contig lengths into groups of
+#100bp. So, all contigs with lengths between 0 and 99 would be in the 0 bucket, those
+#with lengths between 100 and 199 would be in the 100 bucket, etc.
 
 
+#first is begin, second is end, third is increment
+
+buck_dict = dict()
 
 
+for val in range(0, 50000, 100):
+	buck_dict.setdefault(val, 0)
+
+for n in contigs_length_list:
+	if ((n // 100)*100) in buck_dict:
+		buck_dict[(n // 100)*100] +=1
+
+#print(buck_dict)
+
+print("Contig length", "Number of contigs in this category", sep= ("\t"))
+for i in buck_dict:
+	print(i, buck_dict[i], sep="\t")
 
 
-
-
-
-#grep "^>" tester.fa in command line to see what the header lines look like
-
-# Program to extract numbers from a string
-#import re
-#string = 'hello 12 hi 89. Howdy 34'
-#pattern = '\d+'
-#result = re.findall(pattern, string) 
-#print(result)
-# Output: ['12', '89', '34']
-
-
-
-
-	
+#Contiglength Numberofcontigsinthiscategory
