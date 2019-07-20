@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+#SBATCH --partition=bgmp        ### Partition (like a queue in PBS)
+#SBATCH --job-name=align_star      ### Job Name
+#SBATCH --output=g_velvet.out         ### File in which to store job output
+#SBATCH --error=g_velvet.err          ### File in which to store job error messages
+#SBATCH --time=0-00:30:00       ### Wall clock time limit in Days-HH:MM:SS
+#SBATCH --nodes=1               ### Number of nodes needed for the job
+#SBATCH --ntasks-per-node=1     ### Number of tasks to be launched per Node
+#SBATCH --account=bgmp      ### Account used for job submission
+#SBATCH --cpus-per-task=8
+
+conda deactivate
+conda deactivate 
+conda deactivate 
+conda deactivate 
+conda deactivate  
+conda activate bgmp_py3
+
+dir31="/projects/bgmp/msconce/PS6/first_velvet/VelH/kmer31"
+dir41="/projects/bgmp/msconce/PS6/first_velvet/VelH/kmer41"
+dir49="/projects/bgmp/msconce/PS6/first_velvet/VelH/kmer49"
+
+file1="/projects/bgmp/msconce/PS6/800_3_PE5_interleaved.fq_1"
+file2="/projects/bgmp/msconce/PS6/800_3_PE5_interleaved.fq_2"
+file3="/projects/bgmp/msconce/PS6/800_3_PE5_interleaved.fq.unmatched"
+
+# format.  ./velveth output_directory hash_length [[-file_format][-read_type] filename]
+
+/usr/bin/time -v velvetg $dir31 
+/usr/bin/time -v velvetg $dir41 
+/usr/bin/time -v velvetg $dir49 

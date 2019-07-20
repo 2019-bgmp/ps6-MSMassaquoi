@@ -67,13 +67,6 @@ with open(f, "r") as fh:
 			cov_blue_list.append(cov)
 			contigs_N50_list.append(physical_length)
 			contigs_N50_list.sort(reverse=True)
-			print(contigs_N50_list)
-			print(cov_blue_list)
-
-
-
-			
-
 			j+=1
 			contig_counter+=1
 
@@ -119,6 +112,3 @@ for n in contigs_length_list:
 print("Contig length", "Number of contigs in this category", sep= ("\t"))
 for i in buck_dict:
 	print(i, buck_dict[i], sep="\t")
-
-
-#Contiglength Numberofcontigsinthiscategory
